@@ -203,17 +203,6 @@ def focal_loss(preds, targets):
   return loss / len(preds)
 
 
-def slide_win(features, labels, slide_rate,num_clips):
-    features_to_append = torch.zeros(slide_rate - len(features) % slide_rate, features.shape[-1])
-    labels_to_append = torch.zeros(slide_rate - len(labels) % slide_rate, labels.shape[-1])
-    features = torch.cat((features, features_to_append), 0)
-    labels = torch.cat((labels, labels_to_append), 0)
-    features = torch.stack(
-        [features[i:i + int(num_clips)] for i in range(0, len(features) - int(num_clips) + 1, slide_rate)])
-    labels = torch.stack([labels[i:i + int(num_clips)] for i in range(0, len(labels) - int(num_clips) + 1, slide_rate)])
-    return features, labels
-
-
 def gaussian1D(ss, sigma=1):
   m = (ss - 1.) / 2.
   x = np.ogrid[-m:m + 1]
