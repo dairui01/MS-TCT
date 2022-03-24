@@ -1,4 +1,4 @@
-# MS-TCT Implementation (CVPR submission \#730)
+# MS-TCT implementation [CVPR2022] 
 
 In this repository, we provide an implementation of MS-TCT on Charades (Localization setting, i.e., Charades_v1_localize). 
 If you want to train and evaluate MS-TCT, you can follow the following steps. 
