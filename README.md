@@ -25,7 +25,7 @@ Please satisfy the following dependencies to train MS-TCT correctly:
 ## Remarks
 - The network implementation is in ./MSTCT/ folder. 
 - RGB and Optical flow are following the same training process. Both modalities can be added in the logit-level to have the two-stream performance. 
-- In practice, we trained MS-TCT with a Tesla V100 GPU to shrink the computation time. But as MS-TCT is not large, small GPU as GTX 1080 Ti can be sufficient for running the network. 
+- In practice, we trained MS-TCT with a Tesla V100 GPU to shrink the computation time. But as MS-TCT is not large, GTX 1080 Ti can be sufficient for running the network. 
 
 
 ## Reference
