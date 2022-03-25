@@ -4,7 +4,7 @@ In this repository, we provide an implementation of MS-TCT on Charades dataset (
 If you want to train and evaluate MS-TCT, you can follow the following steps. 
 
 ## Prepare the I3D feature
-Like the previous works (e.g., MLAD, PDAN), MS_TCT is built on top of the pre-trained I3D features. Thus, feature extraction is needed before training the network.  
+Like the previous works (e.g. TGM, PDAN), MS_TCT is built on top of the pre-trained I3D features. Thus, feature extraction is needed before training the network.  
 1. Please download the Charades dataset from this [link](https://prior.allenai.org/projects/charades).
 2. Follow this [repository](https://github.com/piergiaj/pytorch-i3d) to extract the snippet-level I3D feature. 
 
