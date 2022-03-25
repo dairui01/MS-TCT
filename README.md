@@ -23,7 +23,7 @@ Please satisfy the following dependencies to train MS-TCT correctly:
 3. Use `python Evaluation.py -pkl_path /best_logit_path/` to evaluate the model with the per-frame mAP and the action-conditional metrics.
 
 ## Remarks
-- The network implementation is in ./MSTCT/ folder. 
+- The network implementation is in _./MSTCT/_ folder. 
 - RGB and Optical flow are following the same training process. Both modalities can be added in the logit-level to have the two-stream performance. 
 - In practice, we trained MS-TCT with a Tesla V100 GPU to shrink the computation time. But as MS-TCT is not large, GTX 1080 Ti can be sufficient for running the network. 
 - The [standard frame-mAP](https://github.com/piergiaj/super-events-cvpr18/blob/master/apmeter.py) is following the Superevent and [action-conditional metrics](https://github.com/ptirupat/MLAD/blob/main/src/cooccur_metric.py) is following the MLAD.
