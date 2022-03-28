@@ -1,5 +1,5 @@
 # [CVPR 2022] MS-TCT 
-## Architectural Overview
+
 ![](Framework.png)
 
 In this repository, we provide an implementation of MS-TCT on Charades dataset (Localization setting, i.e., Charades_v1_localize). 
