@@ -35,7 +35,7 @@ Please satisfy the following dependencies to train MS-TCT correctly:
 If you find our repo or paper useful, please cite us as
 ```bibtex
   @inproceedings{dai2022mstct,
-    title={MS-TCT: Multi-Scale Temporal ConvTransformer for Action Detection},
+    title={{MS-TCT: Multi-Scale Temporal ConvTransformer for Action Detection}},
     author={Dai, Rui and Das, Srijan and Kahatapitiya, Kumara and Ryoo, Michael and Bremond, Francois},
     booktitle={CVPR},
     year={2022}
