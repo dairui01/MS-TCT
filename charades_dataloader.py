@@ -39,7 +39,7 @@ def make_dataset(split_file, split, root, num_classes=157):
 
         fps = num_feat / data[vid]['duration']
         for ann in data[vid]['actions']:
-            # DR
+            # 
             if ann[2] < ann[1]:
                 continue
             mid_point = (ann[2] + ann[1]) / 2
@@ -48,7 +48,8 @@ def make_dataset(split_file, split, root, num_classes=157):
                     label[fr, ann[0]] = 1  # binary classification
 
                 # G* Ground truth Heat-map
-                if fr / fps + 1 > mid_point and fr / fps < mid_point:
+                # if fr / fps + 1 > mid_point and fr / fps < mid_point:
+                if (fr+1) / fps > mid_point and fr / fps < mid_point:
                     center = fr + 1
                     class_ = ann[0]
                     action_duration = int((ann[2] - ann[1]) * fps)
@@ -86,7 +87,8 @@ class Charades(data_utl.Dataset):
         labels = entry[1]
 
         hmap, num_action, center_loc, action_lengths = entry[3]
-        center_loc = np.transpose(center_loc, axes=[1, 0])
+        # print('center_loc',center_loc.shape)
+        # center_loc = np.transpose(center_loc, axes=[1, 0])
         num_clips = self.num_clips
 
         if self.split in ["training", "testing"]:
@@ -98,9 +100,9 @@ class Charades(data_utl.Dataset):
                 features = features[random_index: random_index + num_clips: 1]
                 labels = labels[random_index: random_index + num_clips: 1]
                 hmap = hmap[random_index: random_index + num_clips: 1]
-        center_loc = np.transpose(center_loc, axes=[1, 0])
+        # center_loc = np.transpose(center_loc, axes=[1, 0])
 
-        return features, labels, hmap, [center_loc, action_lengths], [entry[0], entry[2], num_action]
+        return features, labels, hmap, action_lengths, [entry[0], entry[2], num_action]
 
     def __len__(self):
         return len(self.data)
@@ -125,13 +127,7 @@ class collate_fn_unisize():
             l[:b[0].shape[0], :] = b[1]
             h[:b[0].shape[0], :] = b[2]
 
-            center_loc, action_lengths = b[3]
-            cl = np.zeros((max_len1, center_loc.shape[1]), np.float32)
-            al = np.zeros((max_len1, action_lengths.shape[1]), np.float32)
-            cl[:center_loc.shape[0],:]=center_loc
-            al[:center_loc.shape[0],:]=action_lengths
-
-            new_batch.append([video_to_tensor(f), torch.from_numpy(m), torch.from_numpy(l), b[4], torch.from_numpy(h),torch.from_numpy(cl),torch.from_numpy(al) ])
+            new_batch.append([video_to_tensor(f), torch.from_numpy(m), torch.from_numpy(l), b[4], torch.from_numpy(h)])
 
         return default_collate(new_batch)
 

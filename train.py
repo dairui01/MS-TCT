@@ -11,6 +11,7 @@ import numpy as np
 import random
 from utils import *
 from apmeter import APMeter
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-mode', type=str, help='rgb or flow (or joint for eval)')
@@ -63,7 +64,7 @@ if args.dataset == 'charades':
 
     train_split = './data/charades.json'
     test_split = train_split
-    rgb_root =  '/RGB_feat_path/'
+    rgb_root =  '/data/stars/user/rdai/PhD_work/cvpr2020/Charades_v1/charades_feat_rgb'
     flow_root = '/flow_feat_path/'
     rgb_of=[rgb_root,flow_root]
     classes = 157
@@ -126,7 +127,8 @@ def eval_model(model, dataloader, baseline=False):
 
 
 def run_network(model, data, gpu, epoch=0, baseline=False):
-    inputs, mask, labels, other, hm, cl, al = data
+    # 
+    inputs, mask, labels, other, hm = data
     # wrap them in Variable 
     inputs = Variable(inputs.cuda(gpu))
     mask = Variable(mask.cuda(gpu))
@@ -226,6 +228,9 @@ if __name__ == '__main__':
     elif args.mode == 'rgb':
         print('RGB mode', rgb_root)
         dataloaders, datasets = load_data(train_split, test_split, rgb_root)
+
+    if not os.path.exists('./save_logit'):
+        os.makedirs('./save_logit')
 
     if args.train:
 
