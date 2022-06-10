@@ -64,9 +64,9 @@ if args.dataset == 'charades':
 
     train_split = './data/charades.json'
     test_split = train_split
-    rgb_root =  '/data/stars/user/rdai/PhD_work/cvpr2020/Charades_v1/charades_feat_rgb'
-    flow_root = '/flow_feat_path/'
-    rgb_of=[rgb_root,flow_root]
+    rgb_root =  '/rgb_feat_rgb' 
+    flow_root = '/flow_feat_path/' # optional
+    # rgb_of=[rgb_root,flow_root]
     classes = 157
 
 
