@@ -4,7 +4,7 @@
 
 [[Paper Link](https://openaccess.thecvf.com/content/CVPR2022/papers/Dai_MS-TCT_Multi-Scale_Temporal_ConvTransformer_for_Action_Detection_CVPR_2022_paper.pdf)]
 
-In this repository, we provide an implementation of "MS-TCT: Multi-Scale Temporal ConvTransformer for Action Detection" on **Charades** dataset (Localization setting, i.e., Charades_v1_localize). For **MultiTHUMOS**, you can follow the training process [here](https://github.com/dairui01/MS-TCT/issues/2). 
+In this repository, we provide an implementation of "MS-TCT: Multi-Scale Temporal ConvTransformer for Action Detection" on **Charades** dataset (Localization setting, i.e., Charades_v1_localize). For **MultiTHUMOS**, you can follow the training process [here](https://github.com/dairui01/MS-TCT/issues/2) (expected 43.8 % mAP). 
 If you want to train and evaluate MS-TCT, you can follow the following steps. 
 
 ## Prepare the I3D feature
